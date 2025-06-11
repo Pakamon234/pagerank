@@ -19,7 +19,6 @@ for line in sys.stdin:
     node, value = parts
 
     if current_node and node != current_node:
-        # Tính PageRank mới
         new_rank = (1 - d) * (1.0 if current_node == source else 0.0) + d * total
         print(f"{current_node}\t{new_rank}\t{links}")
         total = 0.0
@@ -29,14 +28,13 @@ for line in sys.stdin:
     if value.startswith("LINKS:"):
         links = value[6:]
     elif value == "TELEPORT":
-        pass  # giữ nguyên, xử lý bằng công thức
+        pass
     else:
         try:
             total += float(value)
         except:
             pass
 
-# Kết thúc node cuối cùng
 if current_node:
     new_rank = (1 - d) * (1.0 if current_node == source else 0.0) + d * total
     print(f"{current_node}\t{new_rank}\t{links}")
