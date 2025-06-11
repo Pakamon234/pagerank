@@ -1,3 +1,23 @@
+# Mô tả
+Bài tập lớn 01: Thực hiện bài tập 10.10
+
+Cài đặt Personalized PageRank bằng Hadoop MapReduce
+
+## Tóm tắt: 
+
+Trong Personalized PageRank, thuật toán được
+điều chỉnh để tính toán điểm số của các nút dựa trên một
+nút nguồn (source) được xác định trước. Thay vì tính toán
+PageRank cho tất cả các nút một cách đồng đều, thuật toán
+này chỉ tập trung vào các nút gần với nút nguồn, giúp tạo ra
+một kết quả xếp hạng có tính cá nhân hóa.
+
+Điểm số của nút nguồn được khởi tạo là 1, trong khi các
+nút còn lại có điểm số là 0
+
+![Đề bài Problem 10.10](Image/image13.png)
+
+![Đề bài Problem 10.9](Image/image-1.png)
 
 # Cài đặt Demo
 
