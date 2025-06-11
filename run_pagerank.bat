@@ -2,7 +2,7 @@
 cd /d %~dp0
 
 REM Số vòng lặp PageRank
-set iterations=10
+set iterations= 5
 
 REM Thư mục đầu vào ban đầu
 set input=input

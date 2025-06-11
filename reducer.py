@@ -1,30 +1,42 @@
 import sys
+from collections import defaultdict
 
 d = 0.85
 source = "A"
 
 current_node = None
-sum_rank = 0.0
-structure = ""
-
-def emit_result(node, sum_rank, structure):
-    teleport = 1.0 if node == source else 0.0
-    rank = (1 - d) * teleport + d * sum_rank
-    print(f"{node}\t{rank:.5f}\t{structure}")
+links = ""
+total = 0.0
+teleport = 0
 
 for line in sys.stdin:
-    key, value = line.strip().split('\t')
+    line = line.strip()
+    if not line:
+        continue
+    parts = line.split("\t")
+    if len(parts) != 2:
+        continue
+    node, value = parts
 
-    if current_node and key != current_node:
-        emit_result(current_node, sum_rank, structure)
-        sum_rank = 0.0
-        structure = ""
+    if current_node and node != current_node:
+        # Tính PageRank mới
+        new_rank = (1 - d) * (1.0 if current_node == source else 0.0) + d * total
+        print(f"{current_node}\t{new_rank}\t{links}")
+        total = 0.0
+        links = ""
 
-    current_node = key
-    if value.startswith("STRUCT:"):
-        structure = value[7:]
+    current_node = node
+    if value.startswith("LINKS:"):
+        links = value[6:]
+    elif value == "TELEPORT":
+        pass  # giữ nguyên, xử lý bằng công thức
     else:
-        sum_rank += float(value)
+        try:
+            total += float(value)
+        except:
+            pass
 
+# Kết thúc node cuối cùng
 if current_node:
-    emit_result(current_node, sum_rank, structure)
+    new_rank = (1 - d) * (1.0 if current_node == source else 0.0) + d * total
+    print(f"{current_node}\t{new_rank}\t{links}")

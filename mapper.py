@@ -1,13 +1,23 @@
+# Personalized PageRank mapper
 import sys
+
+d = 0.85  # hệ số nhảy
+source = "A"  # ID node nguồn (sẽ được chỉnh sửa tùy theo dữ liệu)
+
 for line in sys.stdin:
-    parts = line.strip().split('\t')
-    node = parts[0]
-    rank = float(parts[1])
-    outlinks = parts[2].split(',') if len(parts) > 2 else []
+    parts = line.strip().split("\t")
+    if len(parts) == 3:
+        node, rank, outlinks = parts
+        outlinks_list = outlinks.split(',') if outlinks else []
 
-    if outlinks:
-        pr_share = rank / len(outlinks)
-        for out in outlinks:
-            print(f"{out}\t{pr_share}")
+        # Phân phối rank cho các nút liên kết
+        if outlinks_list:
+            contribution = float(rank) / len(outlinks_list)
+            for neighbor in outlinks_list:
+                print(f"{neighbor}\t{contribution}")
 
-    print(f"{node}\tSTRUCT:{','.join(outlinks)}")
+        # Giữ lại danh sách outlinks
+        print(f"{node}\tLINKS:{outlinks}")
+    elif len(parts) == 2 and parts[0] == source:
+        # Trường hợp node nguồn: thêm teleport
+        print(f"{source}\tTELEPORT")
