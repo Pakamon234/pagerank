@@ -64,11 +64,11 @@ cd pagerank
 
 Điều chỉnh file `graph.txt` theo ý muốn sau đó copy nó vào trong thư mục `input`.
 
-![Điều chỉnh input](image/image5.png)
+![Điều chỉnh input](Image/image5.png)
 
 ## BƯỚC 5 – Cấu hình `run_pagerank.bat`
 
-![Cấu hình run_pagerank.bat](image/image6.png)
+![Cấu hình run_pagerank.bat](Image/image6.png)
 
 Thay đổi số lần lặp để có được giá trị hội tụ:
 
@@ -86,15 +86,15 @@ hadoop jar D:\hadoop-3.3.6\share\hadoop\tools\lib\hadoop-streaming-3.3.x.jar
 
 Để chạy chương trình, chạy `run_pagerank.bat`.
 
-![Chạy run_pagerank.bat](image/image7.png)
+![Chạy run_pagerank.bat](Image/image7.png)
 
 Sau khi chạy hoàn tất, xuất hiện thư mục `output`.
 
-![Thư mục Output](image/image10.png)
+![Thư mục Output](Image/image10.png)
 
 Mở file `part-00000` (bằng Notepad) để xem kết quả.
 
-![Dùng Cmd để xem kết quả](image/image11.png)
+![Dùng Cmd để xem kết quả](Image/image11.png)
 
 Hoặc sử dụng Cmd: 
 
@@ -106,8 +106,8 @@ type output\part-00000
 
 Với file input `graph.txt` chứa dữ liệu về đồ thị:
 
-![Input Demo](image/image1.png)
+![Input Demo](Image/image1.png)
 
 Ta sẽ có được kết quả sau khi chạy chương trình như sau:
 
-![Kết quả Demo](image/image12.png)
+![Kết quả Demo](Image/image12.png)
